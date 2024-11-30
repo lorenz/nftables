@@ -73,6 +73,8 @@ func New(opts ...ConnOption) (*Conn, error) {
 	if err != nil {
 		return nil, err
 	}
+	nlconn.SetReadBuffer(1 << 22)
+	nlconn.SetWriteBuffer(1 << 22)
 	cc.nlconn = nlconn
 	return cc, nil
 }
